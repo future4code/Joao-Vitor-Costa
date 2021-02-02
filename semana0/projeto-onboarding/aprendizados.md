@@ -1,0 +1,2 @@
+# Aprendizados da semana
+Durante a primeira semana nós aprendemos sobre regras de convivência, nos habituamos com nossas novas ferramentas de **trabalho**: Slack, Zoom, Notion, Vimeo, AirTable, Git, GitHub e agora o VScode
