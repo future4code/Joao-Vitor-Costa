@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Lojinha do JV</title>
   </head>
   <body>
-    <div>
-      <h1>Bem-vind@ ao <em>Lojinha do JV</em>!</h1>
+    <div id="menu">
+      <ul>
+        <li><a href="./index.html">Página Inicial</a></li>
+        <li><a href="./ctrl-estoque.html">Controle de Estoque</a></li>
+        <li><a href="./add-produto.html">Adicionar Produto</a></li>
+        <li><a href="./funcionarios.html">Funcionários</a></li>
+      </ul>
+    </div>
+
+    <header id="primeira-pg">
+      <h1>Bem-vind@ á <em>Lojinha do JV</em>!</h1>
       <p>A loja que te deixa na moda!</p>
-    </div>
+    </header>
 
-    <div>
-      <a href="./index.html">Página Inicial</a>
-      <a href="./ctrl-estoque.html">Controle de Estoque</a>
-      <a href="./add-produto.html">Adicionar Produto</a>
-      <a href="./funcionarios.html">Funcionários</a>
-    </div>
-
-    <div></div>
-
-    <div>
+    <main>
+      <img class="loja" src="./img/lojajv.jpg" />
+    </main>
+    <footer>
       <p>Siga-nos nas redes sociais!</p>
-
-      <div>
+      <div id="redes">
         <a href="https://facebook.com"
-          ><img src="https://image.flaticon.com/icons/png/512/25/25305.png"
+          ><img
+            class="imagem"
+            src="https://image.flaticon.com/icons/png/512/25/25305.png"
         /></a>
         <a href="https://instagram.com"
-          ><img src="https://image.flaticon.com/icons/png/512/25/25425.png"
+          ><img
+            class="imagem"
+            src="https://image.flaticon.com/icons/png/512/25/25425.png"
         /></a>
         <a href="https://twitter.com/"
-          ><img src="https://image.flaticon.com/icons/png/512/8/8800.png"
+          ><img
+            class="imagem"
+            src="https://image.flaticon.com/icons/png/512/8/8800.png"
         /></a>
       </div>
-    </div>
+    </footer>
   </body>
 </html>

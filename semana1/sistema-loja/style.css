@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#menu ul {
+  background-color: #191970;
+  list-style: none;
+  text-align: center;
+}
+
+#menu ul li {
+  display: inline;
+}
+
+#menu ul li a {
+  padding: 10px 20px;
+  display: inline-block;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 150%;
+}
+
+header {
+  padding: 10px;
+  background-color: rgb(27, 54, 136);
+  text-align: center;
+}
+
+#primeira-pg {
+  font-family: 'Roboto', sans-serif;
+  color: #ccc;
+  font-size: 150%;
+}
+
+.paragrafo {
+  display: inline-block;
+  margin: 0px;
+  color: #cccc;
+  font-size: 200%;
+}
+
+.loja {
+  display: block;
+  margin: 10px auto;
+
+  width: 50%;
+}
+
+#redes {
+  display: flex;
+  justify-content: center;
+}
+
+.imagem {
+  display: inline-block;
+  align-items: center;
+  width: 99px;
+  height: 99px;
+  margin: 5px;
+}
+
+footer p {
+  text-align: center;
+  font-size: 150%;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.form {
+  margin: 5px 10px;
+  padding: 10px;
+}
+
+table {
+  margin: 10px;
+}
+
+table td {
+  border: solid;
+}
+
+#funcionarios {
+  list-style: none;
+  font-size: 200%;
+  margin: 10px;
+}
