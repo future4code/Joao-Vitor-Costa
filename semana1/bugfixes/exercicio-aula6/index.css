@@ -68,13 +68,18 @@ div img {
   **/
 
 #container-de-descricao {
+    position: relative;
     background-color: #2274a5;
     color: white;
+    font-size: 130%;
 }
 
 .mensagem {
-    padding: 180px 0;
+    position: absolute;
+    padding: 150px 0;
     display: block;
+    width: 300px;
+    margin-left: 800px;
 }
 
 #container-de-descricao>ol {
