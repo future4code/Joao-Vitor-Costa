@@ -72,6 +72,11 @@ div img {
     color: white;
 }
 
+.mensagem {
+    padding: 180px 0;
+    display: block;
+}
+
 #container-de-descricao>ol {
     padding: 15px 0px;
 }
