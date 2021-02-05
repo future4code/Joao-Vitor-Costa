@@ -1,0 +1,155 @@
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #191970;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+}
+
+.menu ul li a {
+  display: inline-block;
+  width: 100%;
+  color: white;
+}
+
+#apresentacao {
+  padding: 15px;
+  width: 80%;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.foto {
+  display: block;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+#eu {
+  height: 150px;
+  width: 150px;
+}
+
+#instituicoes {
+  color: white;
+  padding: 20px;
+  display: block;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  font-size: 130%;
+}
+
+.labenu {
+  width: 300px;
+  display: block;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.site {
+  margin-bottom: 20px;
+  padding: 10px 150px;
+  width: 800px;
+  height: 400px;
+}
+
+.trabalhos {
+  font-size: 130%;
+  padding: 10px 155px;
+}
+
+#trabalhos-1 {
+  float: left;
+  position: relative;
+  width: 50%;
+  display: inline;
+}
+
+.soft-skils {
+  display: inline;
+  position: absolute;
+  width: 40%;
+  float: right;
+  padding: 10px 0;
+  font-size: 130%;
+  margin-left: 100px;
+}
+
+.soft-skils-1 {
+  padding: 25px;
+}
+
+ul li {
+  font-size: 130%;
+  padding: 10px;
+}
+
+.formulario {
+  display: block;
+  margin: auto;
+  width: 30%;
+  margin-bottom: 40px;
+}
+
+.formulario input {
+  padding: 10px;
+  position: relative;
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#redes {
+  display: inline-block;
+  width: 60%;
+  width: 99px;
+  height: 99px;
+}
+
+footer {
+  display: block;
+  position: relative;
+  bottom: 0;
+  margin: auto;
+  width: 22%;
+}
+
+.back {
+  background-color: #252323;
+}
+
+.site-1 {
+  position: relative;
+  width: 50%;
+  display: inline;
+  padding: 40px;
+}
+
+.p-1 {
+  padding: 40px;
+  position: absolute;
+  top: 0;
+  display: inline;
+  font-size: 150%;
+}
