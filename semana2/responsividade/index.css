@@ -1,0 +1,140 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#main-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  gap: 20px;
+}
+
+#first-block {
+  display: grid;
+  width: 100%;
+  background-color: red;
+  grid-column: 1/-1;
+}
+
+.container {
+  display: grid;
+  height: 440px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 20px;
+  margin: 0 40px;
+}
+
+.blue-block {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: blue;
+  border: 1px solid black;
+}
+
+.yellow-block {
+  align-items: center;
+  justify-items: center;
+  display: grid;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+.green-block {
+  align-items: center;
+  justify-items: center;
+  display: grid;
+  background-color: green;
+  border: 1px solid black;
+}
+
+.container-1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 300px;
+  gap: 20px;
+  margin: 0 40px;
+  height: 320px;
+}
+
+.black-block {
+  align-items: center;
+  justify-items: center;
+  display: grid;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.container-2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px;
+  gap: 20px;
+  margin: 0 40px;
+  height: 120px;
+}
+
+.white-block {
+  align-items: center;
+  justify-items: center;
+  display: grid;
+  background-color: white;
+  border: 1px solid black;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 420px) {
+  #main-container {
+    height: 250px;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+  }
+
+  .container-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    margin-bottom: 20px;
+  }
+
+  .container-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-device-width: 421px) and (max-device-width: 800px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin-bottom: 20px;
+  }
+
+  .green-block {
+    display: grid;
+    grid-column: 1/-1;
+  }
+
+  .container-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  #branco-11 {
+      display: grid;
+      grid-column: 1/-1;
+  }
+
+}
