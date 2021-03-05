@@ -60,7 +60,7 @@ function retornaExpressoesBooleanas() {
 //Exercício 7
 
 function retornaNNumerosPares(n) {
-array = []
+const array = []
 
 for (let i = 0; i < n; i++) {
    array.push(i * 2)
@@ -273,14 +273,30 @@ function retornaPessoasNaoAutorizadas() {
 //Exercício 19
 
 const consultas = [
-  { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
-  { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
-  { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
-  { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
-  ]
+   { nome: "João", genero: "masculino", cancelada: false, dataDaConsulta: "01/10/2019" },
+   { nome: "Pedro", genero: "masculino", cancelada: true, dataDaConsulta: "02/10/2019" },
+   { nome: "Paula", genero: "feminino", cancelada: false, dataDaConsulta: "03/11/2019" },
+   { nome: "Márcia", genero: "feminino", cancelada: true, dataDaConsulta: "04/11/2019" }
+ ]
 
-function retornaEmailConsulta(consultas) {
-  // implemente sua lógica aqui
+function retornaEmailConsulta() {
+  const emails = consultas.map((item) => {
+     let titulo
+     let pronome 
+     if (item.genero === "masculino") {
+        titulo = "Sr."
+        pronome = "lo"
+     } else {
+      titulo = "Sra."
+      pronome = "la"
+     }
+     if(item.cancelada === false) {
+        return `Olá, ${titulo} ${item.nome}. Estamos enviando esta mensagem para lembrá-${pronome} da sua consulta no dia ${item.dataDaConsulta}. Por favor, acuse o recebimento deste-email.`
+     } else{
+        return `Olá, ${titulo} ${item.nome}. Infelizmente sua consulta marcada para o dia ${item.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la.`
+     }
+  })
+  return emails
 }
 
 //Exercício 20
