@@ -73,9 +73,9 @@ return array
 function checaTriangulo(a, b, c) {
   if (a === b && b === c){
    return "Equilátero"
-  } else if (a === b && b !== c) {
+  } else if (a === b || a === c && b === c) {
    return "Isósceles"
-  } else if (a !== b && b !== c) {
+  } else {
    return "Escaleno"
   }
 }
@@ -83,7 +83,7 @@ function checaTriangulo(a, b, c) {
 // Exercício 9
 
 function comparaDoisNumeros(num1, num2) {
-   // implemente sua lógica aqui
+  // implemente sua lógica aqui
 }
 
 // Exercício 10
