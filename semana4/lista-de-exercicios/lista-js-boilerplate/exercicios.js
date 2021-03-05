@@ -110,13 +110,15 @@ return objeto
 // Exercício 10
 
 function segundoMaiorEMenor(array) {
-  
+  array.sort((a, b) => a - b)
+  let arrayNum =[array[array.length-2], array[1]]
+return arrayNum
 }
 
 //Exercício 11
 
 function ordenaArray(array) {
-   // implemente sua lógica aqui
+  return array.sort((a, b) => a - b)
 }
 
 // Exercício 12
