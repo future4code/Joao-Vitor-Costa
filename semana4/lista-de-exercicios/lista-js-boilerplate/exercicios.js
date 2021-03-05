@@ -25,7 +25,10 @@ function retornaNumerosParesElevadosADois (array) {
 //Exercício 3
 
 function retornaNumerosPares (array) {
-   // implemente sua lógica aqui
+  let arrayPar = array.filter((item) => {
+      return item % 2 === 0
+   })
+   return arrayPar
 }
 
 //Exercício 4
