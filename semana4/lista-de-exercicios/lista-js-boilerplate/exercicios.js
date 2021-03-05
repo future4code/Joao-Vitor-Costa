@@ -136,7 +136,13 @@ function filmeFavorito() {
 // Exercício 13
 
 function imprimeChamada() {
-   // implemente sua lógica aqui
+   let objeto = {
+      nome: "O Diabo Veste Prada",
+      ano: 2006,
+      diretor: "David Frankel", 
+      atores: [ "Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
+   }
+ return `Venha assistir ao filme ${objeto.nome}, de ${objeto.ano}, dirigido por ${objeto.diretor} e estrelado por ${objeto.atores[0]}, ${objeto.atores[1]}, ${objeto.atores[2]}, ${objeto.atores[3]}.`
 }
 
 // Exercício 14
