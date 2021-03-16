@@ -30,11 +30,10 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const listaString = localStorage.getItem("Lista")
-    const listaObjeto = JSON.parse(listaString)
-    this.setState({tarefas: listaObjeto})
-    if (localStorage.getItem("Lista" === null)) {
-      return this.state
+    if (localStorage.getItem("Lista")) {
+      const listaString = localStorage.getItem("Lista")
+      const listaObjeto = JSON.parse(listaString)
+      this.setState({tarefas: listaObjeto})
     }
   };
 
