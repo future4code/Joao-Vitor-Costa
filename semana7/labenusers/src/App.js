@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Lista from "./components/Lista"
 import Home from "./components/Home"
+import Detalhes from "./components/Detalhes";
 
 const BotaoPagina = styled.button`
   width: 300px;
@@ -17,9 +18,11 @@ export default class App extends React.Component {
   changePage = () => {
     switch(this.state.page) {
       case "Home":
-        return  <Home /> 
+        return  <Home></Home>
       case "Lista":
-        return  <Lista /> 
+        return  <Lista> </Lista> 
+      default:
+        return <div></div>
     }
   }
 
@@ -37,6 +40,8 @@ export default class App extends React.Component {
         return <BotaoPagina onClick={this.changePageState}> Lista de usuários </BotaoPagina>
       case "Lista":
         return <BotaoPagina onClick={this.changePageState}> Cadastro </BotaoPagina>
+      default:
+        return <div></div>
     }
   }
 

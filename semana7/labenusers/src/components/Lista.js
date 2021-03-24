@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import Detalhes from "./Detalhes"
 
 const ListaUsuarios = styled.div`
     display: flex;
-    /* flex-direction: column; */
     margin: auto;
     width: 500px;
     height: 100vh;
@@ -23,6 +23,8 @@ class Lista extends React.Component {
 
 state = {
     usuarios: [],
+    page: "Lista",
+    usuarioId: ""
 }
 
 componentDidMount() {
@@ -42,6 +44,7 @@ componentDidMount() {
     }
 
     delUser = (userId) => {
+        if(window.confirm("Você tem certeza de que deseja deletar esse usuário?")) {
         axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
         {
             headers: {
@@ -56,17 +59,35 @@ componentDidMount() {
             alert("Ocorreu um erro! Tente realizar seu cadastro novamente mais tarde!")
         })
     }
+    }
+
+    changePage = (id) => {
+        if(this.state.page !== "Lista") {
+           this.setState({page: "Lista", usuarioId: id}) 
+        } 
+        
+    }
 
 render() {
     const userList = this.state.usuarios.map((usuario) => (
-        <Usuario>
-        <li key={usuario.id}> {usuario.name} </li> <BotaoDelete onClick = {() => this.delUser(usuario.id) } > X </BotaoDelete>
+        <Usuario key={usuario.id} >
+        <li onClick={() => this.changePage(usuario.id)}> {usuario.name} </li> <BotaoDelete onClick = {() => this.delUser(usuario.id) } > X </BotaoDelete>
         </Usuario>
     ))
+
     return(
+        <div>
+        {this.state.page === "Lista" ? 
         <ListaUsuarios>
             <ul>{userList}</ul>
-        </ListaUsuarios>
+        </ListaUsuarios> : 
+        <Detalhes 
+        changePage={this.changePage} 
+        userId={this.state.usuarioId} 
+        />
+        }
+    </div>
+        
     )
 }
 }
