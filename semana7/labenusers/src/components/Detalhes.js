@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import Lista from "./Lista"
 
  const Usuario = styled.div`
      display:flex;
@@ -11,33 +12,42 @@ import axios from "axios";
 class Detalhes extends React.Component {
 
  state = {
-     usuario: []
+     page: "Detalhes",
+     inputName: "",
+     inputEmail: "",
  }
 
-     getUsuario = (userId) => {
-         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
+ componentDidMount = () => {
+     this.getUsuario()
+ }
+
+ changePage = () => {
+     if(this.state.page === "Lista") {
+         return <Lista />
+     }
+ }
+
+ changePageState = () => {
+      this.setState({page: "Lista"})
+  }
+
+     getUsuario = () => {
+         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${this.props.id}`,
          {
              headers:{
                 Authorization: "joao-vitor-alves-cruz"
              } 
           }
          ).then((res) => {
-             this.setState({usuario: res.data})
+             this.setState({inputName: res.data.name, inputEmail: res.data.email})
          })
      }
 
     render() {
-     const user = this.state.usuario.map((usu) => {
-         <Usuario>
-         <p>Nome: </p> <p>{usu.name}</p> 
-         <p>Email: </p> <p>{usu.email}</p>
-         </Usuario>
-     })
         return(
-        <p>
-        {user}
-        <button onClick={this.props.changePage} >Voltar</button>
-        </p>
+        <Usuario>
+        <p>Email: {this.state.inputEmail}</p> <p>Nome: {this.state.inputName}</p> 
+        </Usuario>
         )
     }
 }

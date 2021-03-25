@@ -23,8 +23,7 @@ class Lista extends React.Component {
 
 state = {
     usuarios: [],
-    page: "Lista",
-    usuarioId: ""
+    page: "Lista"
 }
 
 componentDidMount() {
@@ -75,7 +74,7 @@ componentDidMount() {
 render() {
     const userList = this.state.usuarios.map((usuario) => (
         <Usuario key={usuario.id} >
-        <li onClick={() => this.props.alternateUserEdit(usuario.id)}> {usuario.name} </li> <BotaoDelete onClick = {() => this.delUser(usuario.id) } > X </BotaoDelete>
+        <li onClick={()=>this.props.alternateUserEdit(usuario.id)}> {usuario.name} </li> <BotaoDelete onClick = {() => this.delUser(usuario.id) } > X </BotaoDelete>
         </Usuario>
     ))
 

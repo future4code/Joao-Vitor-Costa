@@ -26,9 +26,11 @@ export default class App extends React.Component {
       case "Home":
         return  <Home></Home>
       case "Lista":
-        return  <Lista alternateUserEdit = {this.alternateUserEdit} >  </Lista>
+        return  <Lista alternateUserEdit = {this.alternateUserEdit} />  
       case "Detalhes":
-        return <Detalhes id = {this.state.idUserEdit} /> 
+        return <Detalhes
+        id = {this.state.idUserEdit} 
+        /> 
       default:
         return <div></div>
     }
@@ -39,6 +41,8 @@ export default class App extends React.Component {
     this.setState({page: "Lista"})
     } else if (this.state.page === "Lista") {
     this.setState({page: "Home"})
+    } else if (this.state.page === "Detalhes") {
+      this.setState({page: "Lista"})
     }
   }
 
@@ -48,6 +52,8 @@ export default class App extends React.Component {
         return <BotaoPagina onClick={this.changePageState}> Lista de usuários </BotaoPagina>
       case "Lista":
         return <BotaoPagina onClick={this.changePageState}> Cadastro </BotaoPagina>
+      case "Detalhes":
+        return <BotaoPagina onClick={this.changePageState}> Voltar </BotaoPagina>
       default:
         return <div></div>
     }
