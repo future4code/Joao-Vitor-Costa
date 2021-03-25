@@ -12,7 +12,13 @@ const BotaoPagina = styled.button`
 
 export default class App extends React.Component { 
   state = {
-    page: "Home"
+    page: "Home",
+    idUserEdit: ""
+  }
+
+  alternateUserEdit = (id) =>{
+    this.setState({idUserEdit : id})
+    this.setState({page: "Detalhes"})
   }
 
   changePage = () => {
@@ -20,7 +26,9 @@ export default class App extends React.Component {
       case "Home":
         return  <Home></Home>
       case "Lista":
-        return  <Lista> </Lista> 
+        return  <Lista alternateUserEdit = {this.alternateUserEdit} >  </Lista>
+      case "Detalhes":
+        return <Detalhes id = {this.state.idUserEdit} /> 
       default:
         return <div></div>
     }

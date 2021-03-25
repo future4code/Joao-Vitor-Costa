@@ -61,17 +61,21 @@ componentDidMount() {
     }
     }
 
-    changePage = (id) => {
-        if(this.state.page !== "Lista") {
-           this.setState({page: "Lista", usuarioId: id}) 
-        } 
-        
+    pageChange = () => {
+        switch(this.state.page) {
+            case "Lista":
+                return <Lista />
+        }
+    }
+
+    changePage = () => {
+           this.setState({page: "Lista"})
     }
 
 render() {
     const userList = this.state.usuarios.map((usuario) => (
         <Usuario key={usuario.id} >
-        <li onClick={() => this.changePage(usuario.id)}> {usuario.name} </li> <BotaoDelete onClick = {() => this.delUser(usuario.id) } > X </BotaoDelete>
+        <li onClick={() => this.props.alternateUserEdit(usuario.id)}> {usuario.name} </li> <BotaoDelete onClick = {() => this.delUser(usuario.id) } > X </BotaoDelete>
         </Usuario>
     ))
 
