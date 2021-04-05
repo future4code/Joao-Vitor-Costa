@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Lista from "./components/Lista"
 import Home from "./components/Home"
+import Detalhes from "./components/Detalhes";
 
 const BotaoPagina = styled.button`
   width: 300px;
@@ -11,15 +12,27 @@ const BotaoPagina = styled.button`
 
 export default class App extends React.Component { 
   state = {
-    page: "Home"
+    page: "Home",
+    idUserEdit: ""
+  }
+
+  alternateUserEdit = (id) =>{
+    this.setState({idUserEdit : id})
+    this.setState({page: "Detalhes"})
   }
 
   changePage = () => {
     switch(this.state.page) {
       case "Home":
-        return  <Home /> 
+        return  <Home></Home>
       case "Lista":
-        return  <Lista /> 
+        return  <Lista alternateUserEdit = {this.alternateUserEdit} />  
+      case "Detalhes":
+        return <Detalhes
+        id = {this.state.idUserEdit} 
+        /> 
+      default:
+        return <div></div>
     }
   }
 
@@ -28,6 +41,8 @@ export default class App extends React.Component {
     this.setState({page: "Lista"})
     } else if (this.state.page === "Lista") {
     this.setState({page: "Home"})
+    } else if (this.state.page === "Detalhes") {
+      this.setState({page: "Lista"})
     }
   }
 
@@ -37,6 +52,10 @@ export default class App extends React.Component {
         return <BotaoPagina onClick={this.changePageState}> Lista de usuários </BotaoPagina>
       case "Lista":
         return <BotaoPagina onClick={this.changePageState}> Cadastro </BotaoPagina>
+      case "Detalhes":
+        return <BotaoPagina onClick={this.changePageState}> Voltar </BotaoPagina>
+      default:
+        return <div></div>
     }
   }
 
