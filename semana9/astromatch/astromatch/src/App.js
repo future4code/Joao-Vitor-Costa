@@ -3,13 +3,25 @@ import styled from "styled-components"
 import Home from "./pages/Home"
 import Matches from "./pages/Matches"
 import Header from "./components/Header"
+import "../src/App.css"
+
+const DivGeral = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items:center;
-  justify-content: center;
-  height: 100vh;
+  height: 70%;
+  width: 400px;
+  border: 3px dotted black;
+  background: #FFA384;
+  font-family: "Roboto", sans-serif;
+  border-radius: 24px;
 `
 
 function App() {
@@ -42,10 +54,12 @@ function App() {
   }
 
   return (
+  <DivGeral>
     <DivContainer>
       {renderHeader()}
       {renderPage()}
     </DivContainer>
+    </DivGeral>
   )
 }
 

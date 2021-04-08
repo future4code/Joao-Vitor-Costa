@@ -5,12 +5,13 @@ import styled from "styled-components"
 const DivContainer = styled.div`
 display: flex;
 flex-direction: column;
-align-items: flex-start;
+height: 100%;
+overflow: auto;
 `
 
 const Imagem = styled.img`
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     margin-right: 6px;
     border-radius: 64px;
 `
@@ -21,8 +22,21 @@ const DivMatch = styled.div`
     width: 100%;
     margin: 6px 0;
     :hover {
+        border-radius: 32px;
         cursor: pointer;
-        background-color: gray;
+        background-color: #E7F2F8;
+    }
+`
+
+const Button = styled.button`
+    border-radius: 32px;
+    padding: 6px;
+    border: none;
+    outline: 0;
+    width: 100%;
+    :hover {
+        cursor: pointer;
+        background: #E7F2F8;
     }
 `
 
@@ -63,8 +77,8 @@ const Matches = () => {
     })
 
     return <DivContainer>
+        <Button onClick={() => putMatches()}>Desfazer todos matches</Button>
         {listOfMatches}
-        <button onClick={() => putMatches()}>Desfazer todos matches</button>
         </DivContainer>
 }
 
