@@ -25,9 +25,9 @@ const DivProfile = styled.div`
 
 const Imagem = styled.img`
     width: 300px;
-    height: 250px;;
+    height: 250px;
     margin: 6px 0;
-    border-radius: 8px;
+    border-radius: 24px;
 `
 
 const Bio = styled.h3`
