@@ -16,7 +16,7 @@ const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items:center;
-  height: 70%;
+  height: 72vh;
   width: 400px;
   border: 3px dotted black;
   background: #FFA384;

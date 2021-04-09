@@ -20,29 +20,33 @@ const DivProfile = styled.div`
     background: #E7F2F8;
     border-radius: 24px;
     width: 100%;
-    height: 520px;
+    height: 52vh;
 `
 
 const Imagem = styled.img`
     width: 300px;
-    height: 250px;
+    height: 30vh;
     margin: 6px 0;
     border-radius: 24px;
 `
 
 const Bio = styled.h3`
     align-self: center;
+    height: 8vh;
+`
+
+const H2 = styled.h2`
+    height: 10vh;
 `
 
 const DivBotoes = styled.div`
     display: flex;
     justify-content: space-evenly;
-    height: 20%;
 `
 
 const Icon = styled.img`
-    width: 15%;
-    height: 50%;
+    width: 20%;
+    height: 6vh;
 :hover{
     cursor: pointer;
     transform: scale(1.2,1.2);
@@ -89,7 +93,7 @@ const Home = () => {
             {profile &&
             <DivProfile>
             <Imagem src={profile.photo} alt="Foto"/> 
-            <h2>{profile.name}, {profile.age}</h2>
+            <H2>{profile.name}, {profile.age}</H2>
             <Bio>{profile.bio}</Bio>
             </DivProfile>
             }

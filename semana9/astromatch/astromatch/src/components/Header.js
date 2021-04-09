@@ -8,8 +8,8 @@ const DivContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 360px;
-    height: 65%;
-    margin-top: 12px;
+    height: 6vh;
+    margin: 12px 0;
     border-bottom: 1px solid #E7F2F8;
 `
 const DivGeral = styled.div``
