@@ -37,4 +37,21 @@ export const Button = styled.button`
     cursor: pointer;
     color: #000080;
   }
-`;
+`
+
+export const Input = styled.input`
+    width: 20vw;
+    height: 5vh;
+    outline: 0;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+`
+
+export const Select = styled.select`
+    width: 20.4vw;
+    height: 5vh;
+    outline: 0;
+    background: transparent;
+    border: 2px solid white;
+`

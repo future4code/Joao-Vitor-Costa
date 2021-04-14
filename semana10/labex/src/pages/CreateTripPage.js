@@ -2,9 +2,10 @@ import React, {useState} from "react"
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios"
 import styled from "styled-components"
+import {useProtectedPage} from "../hooks/useProtectedPages"
 
 const CreateTripPage = () => {
-
+  useProtectedPage()
   const history = useHistory()
 
   return (
