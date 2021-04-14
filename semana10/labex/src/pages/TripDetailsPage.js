@@ -9,7 +9,7 @@ const TripsDetailsPage = () => {
   useProtectedPage()
   const [trip, setTrip] = useState({})
   const history = useHistory()
-  const { id } = useParams()
+  const {id} = useParams()
 
   useEffect(() => {
     tripDetails(id)

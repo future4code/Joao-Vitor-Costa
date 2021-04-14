@@ -46,6 +46,9 @@ export const Input = styled.input`
     background: transparent;
     color: white;
     border: 2px solid white;
+    ::placeholder{
+      color: white;
+    }
 `
 
 export const Select = styled.select`
