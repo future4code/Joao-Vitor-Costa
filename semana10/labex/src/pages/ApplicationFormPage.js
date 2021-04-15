@@ -32,6 +32,7 @@ const ApplicationFormPage = () => {
 
   useEffect(() => {
     list()
+    countriesList()
   },[])
 
   const initialState = {
@@ -43,6 +44,7 @@ const ApplicationFormPage = () => {
   }
   const [trips, setTrips] = useState([])
   const [form, onChange] = useForm(initialState)
+  const [countries, setCountries] = useState([]);
 
   const apply = (id) => {
     const body = {
@@ -74,9 +76,24 @@ const ApplicationFormPage = () => {
       });
   };
 
+  const countriesList = () => {
+    axios
+      .get("https://servicodados.ibge.gov.br/api/v1/localidades/paises")
+      .then((res) => {
+        setCountries(res.data);
+      })
+      .catch((err) => {
+        alert("Erro!");
+      });
+  };
+
   const filteredList = trips.map((trip) => {
     return <option> {trip.name} </option>
   })
+
+  const filteredCountries = countries.map((country) => {
+    return <option key={country.nome}> {country.nome} </option>;
+  });
 
   return (
     <DivContainer>
@@ -91,11 +108,10 @@ const ApplicationFormPage = () => {
       </Select>  
 
 
-      <Select 
-      required
-      name = "country"
-      >
-      </Select>
+      <Select required name="country">
+          <option>Escolha um planeta</option>
+          {filteredCountries}
+        </Select>
 
 
       <Input 
@@ -137,7 +153,7 @@ const ApplicationFormPage = () => {
 
 
 
-      
+
 
       <div>
       <Button onClick={history.goBack}> voltar </Button>
@@ -148,4 +164,4 @@ const ApplicationFormPage = () => {
   );
 }
 
-export default ApplicationFormPage;
+export default ApplicationFormPage; 

@@ -55,7 +55,7 @@ export const Select = styled.select`
     width: 20.4vw;
     height: 5vh;
     outline: 0;
-    background: black;
+    background: transparent;
     border: 2px solid white;
-    color: white;
+    color: gray;
 `
