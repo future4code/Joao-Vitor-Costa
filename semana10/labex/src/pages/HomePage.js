@@ -8,22 +8,21 @@ import fundo from "../img/fundo.jpg"
 
 
 const DivContainer = styled.div`
-height: 100vh;
-width: 100vw;
-  color: white;
+  height: 100vh;
+  width: 100%;
   background-image: url(${fundo});
   background-size: 100%;
+  background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+  flex-direction: column;
+  color: white;
+`;
 
 const HomePage = () => {
   const history = useHistory();
-
   const token = window.localStorage.getItem("token")
-
   const validacao = () => {
     if(token === null) {
       goToLoginPage(history)

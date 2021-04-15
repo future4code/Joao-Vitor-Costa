@@ -5,55 +5,96 @@ import styled from "styled-components"
 import { goToAdminHomePage, goToHomePage } from "../routes/coordinator";
 import {Button, Input} from "../components/Estilization"
 import fundo from "../img/fundo.jpg"
+import {useForm} from "../hooks/useForm"
 
 const DivContainer = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-image: url(${fundo});
   background-size: 100%;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: white;
-  `
+`;
+
+const Form = styled.form`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+color: white;
+`
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const history = useHistory()
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value)
+  const initialForm = {
+    email: "",
+    password: ""
   }
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value)
-  }
+  const [form, onChange] = useForm(initialForm)
 
   const login = () => {
     const body = {
-      email: email,
-      password: password
+      email: form.email,
+      password: form.password
     }
 
-    axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/joao-vitor-alves-cruz/login", body)
-    .then((res) => {console.log(res.data) 
-                   window.localStorage.setItem("token", res.data.token)
-                   goToAdminHomePage(history)
+    const token = window.localStorage.getItem("token")
+
+    axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/joao-vitor-alves-cruz/login", body,
+    {
+      headers: {
+        auth: token
+      }
     })
-    .catch((err) => {console.log(err.message)})
+    .then((res) => { 
+      window.localStorage.setItem("token", res.data.token)
+      goToAdminHomePage(history)
+    })
+    .catch((err) => {
+    console.log(err.message)
+    alert("Email ou senha incorretos!")
+    })
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    login()
   }
 
   return (
     <DivContainer>
+
       <h1>LoginPage</h1>
-      <Input value={email} onChange={handleEmail} placeholder={"E-mail"}></Input>
-      <Input value={password} onChange={handlePassword} placeholder={"Senha"}></Input>
+      <Form onSubmit={handleClick} >
+      <Input 
+      required
+      value={form.email} 
+      name="email" 
+      onChange={onChange} 
+      placeholder={"E-mail"}
+      type="text">
+      </Input>
+      <Input 
+      required
+      value={form.password} 
+      name = "password" 
+      type="password" 
+      onChange={onChange} 
+      placeholder={"Senha"}>
+      </Input>
       <div>
       <Button onClick={() => goToHomePage(history)}> voltar </Button>
-      <Button onClick={login}>entrar</Button>
+      <Button>entrar</Button>
       </div>
+      </Form>
+      
+      
     </DivContainer>
   );
 }
