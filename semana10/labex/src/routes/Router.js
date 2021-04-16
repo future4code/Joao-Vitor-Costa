@@ -7,7 +7,7 @@ import HomePage from "../pages/HomePage";
 import ListTripsPage from "../pages/ListTripsPage";
 import LoginPage from "../pages/LoginPage";
 import TripsDetailsPage from "../pages/TripDetailsPage";
-import ErrorPage from "../pages/ErrorPage"
+import ErrorPage from "../pages/ErrorPage";
 
 const Router = () => {
   return (
@@ -19,7 +19,7 @@ const Router = () => {
         <Route exact path="/ApplicationFormPage">
           <ApplicationFormPage />
         </Route>
-        <Route exact path="/admin/trips/create"> 
+        <Route exact path="/admin/trips/create">
           <CreateTripPage />
         </Route>
         <Route exact path="/">
@@ -35,7 +35,7 @@ const Router = () => {
           <TripsDetailsPage />
         </Route>
         <Route>
-            <ErrorPage />
+          <ErrorPage />
         </Route>
       </Switch>
     </BrowserRouter>

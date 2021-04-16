@@ -7,23 +7,9 @@ import {
   goToHomePage,
   goToLoginPage,
 } from "../routes/coordinator";
-import { Button } from "../components/Estilization";
+import { Button, DivContainer } from "../components/Estilization";
 import { useProtectedPage } from "../hooks/useProtectedPages";
-import fundo from "../img/fundo.jpg";
 import { TripCard } from "../components/TripCard";
-
-const DivContainer = styled.div`
-  height: 100vh;
-  width: 100%;
-  background-image: url(${fundo});
-  background-size: 100%;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-`;
 
 const DivLista = styled.div`
   overflow: auto;
@@ -57,7 +43,9 @@ const AdminHomePage = () => {
   };
 
   const filteredList = trips.map((trip) => {
-    return <TripCard key={trip.id} name={trip.name} tripId={trip.id} list={list}/>;
+    return (
+      <TripCard key={trip.id} name={trip.name} tripId={trip.id} list={list} />
+    );
   });
 
   return (
@@ -67,8 +55,8 @@ const AdminHomePage = () => {
         <Button onClick={() => goToCreateTripPage(history)}>
           Criar viagem
         </Button>
-        <Button onClick={() => goToHomePage(history)}>voltar</Button>
-        <Button onClick={logout}>logout</Button>
+        <Button onClick={() => goToHomePage(history)}>Voltar</Button>
+        <Button onClick={logout}>Logout</Button>
       </div>
 
       <DivLista>

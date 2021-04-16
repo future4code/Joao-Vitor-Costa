@@ -1,5 +1,8 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import "../App.css";
+import fundo from "../img/fundo.jpg";
+import fundo2 from "../img/fundo2.jpg";
+import fundo3 from "../img/fundo3.jpg";
 
 export const Button = styled.button`
   font-family: "Zen Dots", cursive;
@@ -37,25 +40,64 @@ export const Button = styled.button`
     cursor: pointer;
     color: #000080;
   }
-`
+`;
 
 export const Input = styled.input`
-    width: 20vw;
-    height: 5vh;
-    outline: 0;
-    background: transparent;
+  width: 20vw;
+  height: 5vh;
+  outline: 0;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  ::placeholder {
     color: white;
-    border: 2px solid white;
-    ::placeholder{
-      color: white;
-    }
-`
+  }
+`;
 
 export const Select = styled.select`
-    width: 20.4vw;
-    height: 5vh;
-    outline: 0;
-    background: transparent;
-    border: 2px solid white;
-    color: gray;
-`
+  width: 20.4vw;
+  height: 5vh;
+  outline: 0;
+  background: transparent;
+  border: 2px solid white;
+  color: gray;
+`;
+
+export const DivContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  background-image: url(${fundo});
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+`;
+
+export const DivContainer2 = styled.div`
+  height: 100vh;
+  width: 100%;
+  background-image: url(${fundo2});
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+`;
+
+export const DivContainer3 = styled.div`
+  height: 100vh;
+  width: 100%;
+  background-image: url(${fundo3});
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+`;

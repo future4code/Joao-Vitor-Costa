@@ -1,19 +1,18 @@
-import React, {useState} from "react"
-import { useHistory, useParams } from "react-router-dom";
-import axios from "axios"
-import styled from "styled-components"
-import {useProtectedPage} from "../hooks/useProtectedPages"
-import {goToAdminHomePage} from "../routes/coordinator"
-import {Button, Input, Select} from "../components/Estilization"
-import fundo from "../img/fundo.jpg"
-import {useForm} from "../hooks/useForm"
+import React from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import styled from "styled-components";
+import { useProtectedPage } from "../hooks/useProtectedPages";
+import { goToAdminHomePage } from "../routes/coordinator";
+import {
+  Button,
+  Input,
+  Select,
+  DivContainer3,
+} from "../components/Estilization";
+import { useForm } from "../hooks/useForm";
 
-const DivContainer = styled.div`
-  height: 100vh;
-  width: 100%;
-  background-image: url(${fundo});
-  background-size: 100%;
-  background-repeat: no-repeat;
+const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,19 +20,8 @@ const DivContainer = styled.div`
   color: white;
 `;
 
-  const Form = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-  `
-
-  const Option = styled.option`
-  `
-
 const CreateTripPage = () => {
-  useProtectedPage()
+  useProtectedPage();
 
   const initialForm = {
     name: "",
@@ -41,101 +29,113 @@ const CreateTripPage = () => {
     planet: "",
     durationInDays: "",
     date: "",
-  }
-  const [form, onChange] = useForm(initialForm)
+  };
+  const [form, onChange, resetForm] = useForm(initialForm);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const createTrip = () => {
-    const token = window.localStorage.getItem("token")
+    const token = window.localStorage.getItem("token");
+    const dateArray = form.date.split("-");
+    const date = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`;
     const body = {
-      "name": form.name,
-      "description": form.description,
-      "planet": form.planet,
-      "durationInDays": form.durationInDays,
-      "date": form.date
-    } 
-    axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/joao-vitor-alves-cruz/trips", body,
-    {
-      headers: {
-        auth: token
-      }
-    }
-    )
-    .then(() => {
-      alert("Viagem criada com sucesso!")
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+      name: form.name,
+      description: form.description,
+      planet: form.planet,
+      durationInDays: form.durationInDays,
+      date: date,
+    };
+    axios
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/joao-vitor-alves-cruz/trips",
+        body,
+        {
+          headers: {
+            auth: token,
+          },
+        }
+      )
+      .then(() => {
+        alert("Viagem criada com sucesso!");
+        resetForm()
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
-    createTrip()
-  }
+    createTrip();
+  };
+
+  const today = new Date();
+  const stringToday =
+    today.getFullYear() +
+    "-" +
+    ("0" + (today.getMonth() + 1)).substr(-2) +
+    "-" +
+    ("0" + today.getDate()).substr(-2);
 
   return (
-    <DivContainer>
+    <DivContainer3>
       <h1>CreateTripPage</h1>
-      <Form onSubmit = {handleClick}>
-      <Select 
-      required
-      onChange={onChange}
-      name = "planet"
-      value = {form.planet} 
-      >
-        <Option>Escolha um planeta</Option>
-        <Option>Mercúrio</Option>
-        <Option>Terra</Option>
-        <Option>Marte</Option>
-        <Option>Vênus</Option>
-        <Option>Saturno</Option>
-        <Option>Urano</Option>
-        <Option>Netuno</Option>
-        <Option>Plutão</Option>
-        <Option>Jupiter</Option>
-      </Select>
-      <Input 
-      required
-      name = "name"
-      value = {form.name}
-      onChange={onChange} 
-      type= "text"
-      placeholder={"Nome"}
-      pattern={"(.*[a-z]){5}"}
-      />
-      <Input 
-      required
-      onChange={onChange} 
-      type = "date"
-      name = "date"
-      value = {form.date}
-      />
-      <Input 
-      required
-      onChange={onChange} 
-      placeholder={"Descrição"}
-      type = "text"
-      name = "description"
-      value = {form.description}
-      />
+      <Form onSubmit={handleClick}>
+        <Select required onChange={onChange} name="planet" value={form.planet}>
+          <option>Escolha um planeta</option>
+          <option>Mercúrio</option>
+          <option>Terra</option>
+          <option>Marte</option>
+          <option>Vênus</option>
+          <option>Saturno</option>
+          <option>Urano</option>
+          <option>Netuno</option>
+          <option>Plutão</option>
+          <option>Jupiter</option>
+        </Select>
+        <Input
+          required
+          name="name"
+          value={form.name}
+          onChange={onChange}
+          type="text"
+          placeholder={"Nome"}
+          pattern={"^.{5,}$"}
+        />
+        <Input
+          required
+          onChange={onChange}
+          type="date"
+          name="date"
+          value={form.date}
+          min={stringToday}
+        />
+        <Input
+          required
+          onChange={onChange}
+          placeholder={"Descrição"}
+          type="text"
+          name="description"
+          value={form.description}
+          pattern={"^.{30,}$"}
+        />
 
-      <Input 
-      required
-      onChange={onChange} 
-      placeholder={"Duração em dias"} 
-      type = {"number"}
-      name = "duration"
-      value = {form.durationInDays}
-      min = {50}
-      />
-      <div>
-      <Button onClick={() => goToAdminHomePage(history)}> voltar </Button>
-      <Button>Criar</Button>
-      </div>
+        <Input
+          required
+          onChange={onChange}
+          placeholder={"Duração em dias"}
+          type="number"
+          name="durationInDays"
+          value={form.durationInDays}
+          min="50"
+        />
+        <div>
+          <Button onClick={() => goToAdminHomePage(history)}> Voltar </Button>
+          <Button>Criar</Button>
+        </div>
       </Form>
-    </DivContainer>
+    </DivContainer3>
   );
-}
+};
 
 export default CreateTripPage;
