@@ -1,10 +1,9 @@
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 import React from "react"
-import LoginPage from "../pages/LoginPage"
-import SignUpPage from "../pages/SignUpPage"
-import PostListPage from "../pages/PostListPage"
-import AddPostPage from "../pages/AddPostPage"
-import PostDetailPage from "../pages/PostDetailPage"
+import LoginPage from "../pages/login/LoginPage"
+import SignUpPage from "../pages/signup/SignUpPage"
+import PostListPage from "../pages/list/PostListPage"
+import PostDetailPage from "../pages/details/PostDetailPage"
 
 
 const Router = () => {
@@ -18,9 +17,6 @@ const Router = () => {
         </Route>
         <Route exact path="/">
             <PostListPage/>
-        </Route>
-        <Route exact path="/adicionar-post">
-            <AddPostPage/>
         </Route>
         <Route exact path="/detalhe/:id">
             <PostDetailPage/>
