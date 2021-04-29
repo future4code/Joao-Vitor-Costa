@@ -3,7 +3,9 @@ import { useProtectedPage } from "../../hooks/useProtectedPage";
 import axios from "axios";
 import useForm from "../../hooks/useForm";
 import Card from "../../components/card/Card";
-import { DivContainer } from "./styled";
+import { DivContainer, DivPost } from "./styled";
+import TextField from "@material-ui/core/TextField"
+import Button from "@material-ui/core/Button"
 
 const PostListPage = () => {
   useProtectedPage();
@@ -43,7 +45,11 @@ const PostListPage = () => {
     name={i.username} 
     text={i.text} 
     title={i.title} 
-    id={i.id}/>;
+    id={i.id}
+    value={i.votesCount}
+    getDetails={getPosts}
+    direction={i.userVoteDirection}
+    comments={i.commentsCount}/>;
   });
 
   const posting = () => {
@@ -67,34 +73,35 @@ const PostListPage = () => {
       });
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
     posting();
     clear();
   };
 
   return (
     <DivContainer>
-      <form onSubmit={handleClick}>
-        <input
+        <DivPost>
+        <TextField
           required
           value={form.text}
           name="text"
           type="text"
           onChange={onChange}
-          placeholder="Texto"
+          label="Texto"
         />
-        <input
+        <TextField
           required
           value={form.title}
           name="title"
           type="text"
           onChange={onChange}
-          placeholder="Título"
+          label="Título"
         />
-        <button>Postar</button>
-      </form>
-
+        <Button 
+        variant={"contained"}
+        color='primary'
+        onClick={() => handleClick()}>Postar</Button>
+        </DivPost>
       {posts ? orderedList : <h1>Carregando</h1>}
     </DivContainer>
   );

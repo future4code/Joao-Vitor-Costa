@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const DivContainer = styled.div`
-  background: green;
   width: 350px;
   height: 400px;
   margin: 6px;
+  border-radius: 24px;
+margin: 20px;
 `;
 
 export const Text = styled.p`
@@ -14,28 +15,48 @@ export const Text = styled.p`
 export const DivCounter = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 6px;
 `;
 
 export const Section = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 8%;
+  height: 10%;
   align-items: center;
+  background-color: #ff4500;
+  color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 `;
 
 export const DivText = styled.div`
-    min-height: 65%;
-    max-height: 65%;
-    overflow-y: auto;
-    margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 65%;
+  max-height: 65%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  :hover {
+    cursor: pointer;
+  }
+`;
 
-`
-
-export const H2 = styled.h3`
-    height: 15%;
-`
+export const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: #ff4500;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+`;
 
 export const Button = styled.button`
   height: 20%;
+`;
+
+export const P = styled.p`
+  margin-right: 6px;
 `

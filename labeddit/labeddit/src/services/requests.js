@@ -6,9 +6,10 @@ export const login = (form, clear, history) => {
     .then((res) => {
         window.localStorage.setItem("token", res.data.token)
         goToPostList(history)
+        clear()
     }).catch((err) => {
         console.log(err.data)
-        alert("Email ou senha invalidos!")
+        alert(err.response.data.message)
         clear()
     })
 }
@@ -18,9 +19,10 @@ export const signUp = (form, clear, history) => {
     .then((res) => {
         window.localStorage.setItem("token", res.data.token)
         goToPostList(history)
+        clear()
     }).catch((err) => {
         console.log(err)
-        alert("Email ou senha invalidos!")
+        alert(err.response.data.message)
         clear()
     })
 }
