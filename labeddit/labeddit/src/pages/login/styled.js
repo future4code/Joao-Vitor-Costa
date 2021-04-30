@@ -16,8 +16,7 @@ export const Form = styled.div`
     flex-direction: column;
 `
 
-export const StyledTextField = styled(TextField)`
-   
+export const StyledTextField = styled(TextField)`  
 `
 
 export const StyledButton = styled(Button)`

@@ -6,6 +6,7 @@ import Card from "../../components/card/Card";
 import { DivContainer, DivPost } from "./styled";
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const PostListPage = () => {
   useProtectedPage();
@@ -102,7 +103,7 @@ const PostListPage = () => {
         color='primary'
         onClick={() => handleClick()}>Postar</Button>
         </DivPost>
-      {posts ? orderedList : <h1>Carregando</h1>}
+      {posts.length > 0 ? orderedList : <CircularProgress color="primary"/>}
     </DivContainer>
   );
 };

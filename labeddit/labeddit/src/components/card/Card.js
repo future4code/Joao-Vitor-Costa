@@ -8,20 +8,32 @@ import {
   DivCounter,
   DivText,
   Title,
-  Button,
-  P
+  P,
+  Img,
+  Img1
 } from "./styled";
 import axios from "axios";
+import up from "../../img/up.png"
+import down from "../../img/down.png"
 
-const Card = ({ title, name, text, id, getDetails, value, direction, comments }) => {
+const Card = ({
+  title,
+  name,
+  text,
+  id,
+  getDetails,
+  value,
+  direction,
+  comments,
+}) => {
   const history = useHistory();
 
   const vote = (number, currentDirection) => {
-    let correctedDirection
-    if(number === currentDirection) {
-        correctedDirection = 0
+    let correctedDirection;
+    if (number === currentDirection) {
+      correctedDirection = 0;
     } else {
-        correctedDirection = number
+      correctedDirection = number;
     }
 
     const body = {
@@ -58,9 +70,9 @@ const Card = ({ title, name, text, id, getDetails, value, direction, comments })
 
       <Section>
         <DivCounter>
-          <Button onClick={() => vote(-1, direction)}>-</Button>
+          <Img1 onClick={() => vote(-1, direction)} src={down}/>
           <p>{value}</p>
-          <Button onClick={() => vote(+1, direction)}>+</Button>
+          <Img onClick={() => vote(+1, direction)} src={up}/>
         </DivCounter>
 
         <P>{comments} comentario(s)</P>

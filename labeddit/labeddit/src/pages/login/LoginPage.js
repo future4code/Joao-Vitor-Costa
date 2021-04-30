@@ -12,7 +12,7 @@ import {
   DivInputs,
 } from "./styled";
 
-const LoginPage = () => {
+const LoginPage = ({text, setText}) => {
   useUnprotectedPage();
   const history = useHistory();
 
@@ -23,7 +23,7 @@ const LoginPage = () => {
   const [form, onChange, clear] = useForm(initialForm);
 
   const handleClick = () => {
-    login(form, clear, history);
+    login(form, clear, history, setText);
   };
 
   return (

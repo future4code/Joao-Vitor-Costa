@@ -60,3 +60,21 @@ export const Button = styled.button`
 export const P = styled.p`
   margin-right: 6px;
 `
+
+export const Img = styled.img`
+  height: 10%;
+  width: 12%;
+  margin: 0 3px;
+  :hover{
+    cursor: pointer;
+  }
+`
+
+export const Img1 = styled.img`
+  height: 10%;
+  width: 10%;
+  margin: 0 3px;
+  :hover{
+    cursor: pointer;
+  }
+`

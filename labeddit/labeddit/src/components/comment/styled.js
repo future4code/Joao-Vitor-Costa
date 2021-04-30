@@ -43,3 +43,21 @@ export const Section = styled.div`
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 `;
+
+export const Img = styled.img`
+  height: 10%;
+  width: 8%;
+  margin: 0 3px;
+  :hover{
+    cursor: pointer;
+  }
+`
+
+export const Img1 = styled.img`
+  height: 10%;
+  width: 6%;
+  margin: 0 3px;
+  :hover{
+    cursor: pointer;
+  }
+`

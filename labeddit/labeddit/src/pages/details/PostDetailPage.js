@@ -3,11 +3,12 @@ import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { useParams } from "react-router-dom";
 import axios from "axios"
 import Card from "../../components/card/Card"
-import {DivContainer, DivComment} from "./styled"
+import {DivContainer, DivComment, Div} from "./styled"
 import CommentCard from "../../components/comment/CommentCard"
 import useForm from "../../hooks/useForm"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const PostDetailPage = () => {
     useProtectedPage()
@@ -35,22 +36,19 @@ const PostDetailPage = () => {
             }
         })
         .then((res) => {
-            setComments(res.data.post.comments)
-            setPost(res.data.post)
+            const newList = res.data.post.comments.filter((comment)=>{
+                return typeof comment.text === "string"
+            })
+            const filteredPost = {...res.data.post, comments: newList}
+            setPost(filteredPost)
+            setComments(filteredPost.comments)
             setValue(res.data.post.votesCount)
             setDirection(res.data.post.userVoteDirection)
-            setNumberOfComments(res.data.post.comments.length)
+    setNumberOfComments(res.data.post.comments.length)
         }).catch((err) => {
             console.log(err)
         })
     }
-
-    const orderedComments = comments.map((com) => {
-        return  <CommentCard 
-            name={com.username}
-            text={com.text}
-        />
-    })
 
     const postComment = () => {
         axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${pathParams.id}/comment`, form, 
@@ -72,8 +70,25 @@ const PostDetailPage = () => {
         clear()
     }
 
+    const orderedComments = () => {
+        if(comments.length === 0){
+            return <Div><CircularProgress color="primary"/> <h3>Se o loading permanecer por mais de 10 segundos, esse post ainda não possui comentários, seja o primeiro logo acima!!!</h3></Div>
+        } else {
+           return comments.map((com) => {
+                return <CommentCard 
+                 name={com.username}
+                 text={com.text}
+                 commentId={com.id}
+                 value={com.votesCount}
+                 direction={com.userVoteDirection}
+                 getDetails={getDetails}
+                 id={pathParams.id}>
+                 </CommentCard>})
+        }
+    }
+
     return <DivContainer>
-        {post ? <Card 
+        {post.length !== 0 ? <Card 
         key = {post.id}
         name={post.username}
         text={post.text}
@@ -84,8 +99,7 @@ const PostDetailPage = () => {
         direction={direction}
         comments={numberOfComments}
         /> 
-        : <p>Carregando</p> }
-
+        : <CircularProgress color="secondary"/> }
         <DivComment>
         <TextField
           required
@@ -101,8 +115,7 @@ const PostDetailPage = () => {
         color = 'primary'
         >Enviar</Button>
         </DivComment>
-
-        {comments ? orderedComments : <p>Carregando...</p>}
+         {orderedComments()} 
     </DivContainer>
 }
 

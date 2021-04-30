@@ -4,9 +4,8 @@ import Button from '@material-ui/core/Button';
 import { goToLogin } from '../../routes/coordinator';
 import { useHistory } from "react-router-dom";
 
-const Header = () => {
+const Header = ({text, setText}) => {
 const token = window.localStorage.getItem("token")
-const [text, setText] = useState(token ? "Logout": "Login")
 const history = useHistory()
 
 const logout = () => {
