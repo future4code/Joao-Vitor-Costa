@@ -1,0 +1,15 @@
+{
+  "name": "package-template",
+  "version": "1.0.0",
+  "description": "aprendendo a usar",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "package"
+  ],
+  "author": "joao vitor alves",
+  "license": "ISC"
+}
