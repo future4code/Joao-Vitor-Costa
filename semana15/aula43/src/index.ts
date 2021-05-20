@@ -56,29 +56,32 @@ app.get("/countries/search", (req: Request, res: Response) => {
      }
 })
 
-app.put("/countries/edit/:id", (req: Request, res: Response) => {
- let name = req.body.name as string
- let capital = req.body.capital as string
- const id = Number(req.params.id)
- try{
- if(id){
- 
- countries.find((country) => {
-     if(country.id === id){
-         country.name = name,
-         country.capital = capital
-     } else {
-        throw new Error("nao especificado")
-     }
- })
- res.status(200).send({message: "succes"})
-} else {
-    throw new Error("You must specify a country")
-}
-}catch(error) {
-    res.status(400).send({message: error.message})
-}
-})
+app.put('/countries/edit/:id',(req:Request, res:Response)=>{
+    try{
+      const {id} = req.params
+      const name = req.body.name as string
+      const capital = req.body.capital as string
+
+      if(isNaN(Number(id))){
+        throw new Error('Id must be a number')
+      }
+      const index = countries.findIndex(c => c.id === Number(id))
+      if(index < 0){
+        throw new Error('Country not found')
+      }
+      if(name){
+        countries[index].name = name
+      }
+      if(capital){
+        countries[index].capital = capital
+      }
+  
+      res.status(200).send(countries[index])
+  
+    }catch (err){
+      res.status(400).send({message: err.message})
+    }
+  })
 
 app.get("/countries/:id", (req: Request, res: Response)=>{
     try{
