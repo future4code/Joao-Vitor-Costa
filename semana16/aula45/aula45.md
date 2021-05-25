@@ -9,3 +9,6 @@ e) O erro é o número 1292 que atesta que o formato do elemento "birth_date" n�
 
 3.c) Não existe nenhum ator ou atriz que tenha o gender = invalid, por isso, o MySql retorna todas as colunas como null.
 e) Não existe uma coluna chamada "nome", por isso o erro 1054 ocorre.
+
+4.a) A query tem a função de selecionar apenas os atores cujos nomes comecem com A ou J e o salário seja maior do que 300000.
+b)
