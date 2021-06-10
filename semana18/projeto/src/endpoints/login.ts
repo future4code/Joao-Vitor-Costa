@@ -27,7 +27,7 @@ const login = async(req:Request, res: Response):Promise<void> => {
         throw new Error("Invalid Credentials")
     }
 
-    const token = generateToken(user.id)
+    const token = generateToken({id: user.id})
 
     res.send({access_token: token})
     } catch (error) {

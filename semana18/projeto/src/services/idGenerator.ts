@@ -1,5 +1,3 @@
-// 1.b
-
 import {v4} from "uuid"
 
 const generateId = (): string => {
