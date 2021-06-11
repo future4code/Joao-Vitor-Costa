@@ -1,4 +1,3 @@
-import * as jwt from "jsonwebtoken";
 import connection from "../connection";
 
  const functionGetRecipe = async(id: string) => {
