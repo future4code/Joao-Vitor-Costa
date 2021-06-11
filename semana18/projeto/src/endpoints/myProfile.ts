@@ -6,7 +6,7 @@ const getMyUser = async(req:Request, res:Response): Promise<void> => {
     try {
         const token = req.headers.authorization as string
         if(!token){
-            throw new Error("You are not allowed to do this.")
+            throw new Error("This user doesn't exist")
         }
         const tokenData = getDataByToken(token)
 
@@ -17,7 +17,7 @@ const getMyUser = async(req:Request, res:Response): Promise<void> => {
 
         let messageErr = error.message
 
-        if(error.message.includes("jwt malformed")){
+        if(error.message.includes("jwt malformed") || error.message.includes("invalid token")){
             messageErr = "This user doesn't exist"
         }
 
