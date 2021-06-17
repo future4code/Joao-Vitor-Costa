@@ -1,10 +1,20 @@
 import { insertPost } from "../../data/post/insertPost";
 import { postData } from "../../model/post";
+import { getTokenData } from "../../services/authenticator";
 import { generateId } from "../../services/idGenerator";
 
 export const createPostBusiness = async (
-    postData: postData
+    postData: postData,
+    token: string
 ) => {
+
+   const author = getTokenData(token)
+
+   const author_id = author.id
+
+   if(!author){
+      throw new Error('Esse usuário não existe')
+   }
 
    if (
       !postData.photo ||
@@ -17,8 +27,7 @@ export const createPostBusiness = async (
 
    const id: string = generateId()
 
-   await insertPost({
-      id,
-      ...postData
-   })
+   const postWithUserInfo = {id, ...postData, author_id}
+
+   await insertPost(postWithUserInfo)
 }

@@ -16,11 +16,11 @@ app.use("/post", postRouter)
 //       let message = "Success!"
 //       const { name, email, password } = req.body
 
-//       if (!name || !email || !password) {
-//          res.statusCode = 406
-//          message = '"name", "email" and "password" must be provided'
-//          throw new Error(message)
-//       }
+    //   if (!name || !email || !password) {
+    //      res.statusCode = 406
+    //      message = '"name", "email" and "password" must be provided'
+    //      throw new Error(message)
+    //   }
 
 //       const id: string = generateId()
 

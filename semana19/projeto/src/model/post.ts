@@ -10,4 +10,11 @@ export type postData = {
     type: POST_TYPES
  }
  
- export type post = postData & { id: string }
+ export type post = {
+    photo: string,
+    description: string,
+    created_at: string,
+    type: POST_TYPES,
+    id: string, 
+    author_id: string
+ }

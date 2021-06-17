@@ -1,22 +1,14 @@
 import { selectPostById } from "../../data/post/selectPostById"
+import { post } from "../../model/post"
 
 export const getPostByIdBusiness = async (
    id: string
-): Promise<any> => {
+): Promise<post> => {
    const result = await selectPostById(id)
 
    if (!result) {
       throw new Error("Tarefa não encontrada")
    }
-
-   const postWithUserInfo = {
-      id: result.id,
-      photo: result.photo,
-      description: result.description,
-      type: result.type,
-      createdAt: result.created_at,
-      authorId: result.author_id
-   }
-
-   return postWithUserInfo
+   
+   return result
 }

@@ -10,6 +10,7 @@ export const insertPost = async (
          photo: post.photo,
          description: post.description,
          created_at: post.created_at,
-         type: post.type
+         type: post.type,
+         author_id: post.author_id
       })
 }

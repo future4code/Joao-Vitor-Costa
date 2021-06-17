@@ -7,6 +7,7 @@ import { generateId } from "../../services/idGenerator";
 export const signupBusiness = async (
    userData: userData
 ):Promise<string> => {
+
    if (
       !userData.name ||
       !userData.email ||

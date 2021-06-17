@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getPostByIdBusiness } from "../../business/post/getPostByIdBusiness";
-import { postData } from "../../model/post";
+import { post } from "../../model/post";
 
 export const getPostById = async (
    req: Request,
@@ -8,12 +8,11 @@ export const getPostById = async (
 ) => {
    try {
 
-      const { id } = req.params
+      const id  = req.params.id as string
 
-      const post = getPostByIdBusiness(id)
+      const post = await getPostByIdBusiness(id)
 
       res.status(200).send(post)
-
    } catch (error) {
       res.status(400).send(error.message)
    }
