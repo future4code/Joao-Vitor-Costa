@@ -1,25 +1,30 @@
-import { compare } from "../../services/hashManager"
-import { selectUserByEmail } from "../../data/user/selectUserByEmail"
+import { HashManager } from "../../services/hashManager"
 import { generateToken } from "../../services/authenticator"
+import { UserDataBase } from "../../data/user/UserDataBase"
+import { CustomError } from "../errors/CustomError"
 
 export const loginBusiness = async (
    email: string,
    password: string
 ) => {
    if (!email || !password) {
-      throw new Error("'email' e 'senha' são obrigatórios")
+      throw new CustomError(400, "'email' e 'senha' são obrigatórios")
    }
 
-   const user = await selectUserByEmail(email)
+   const ud = new UserDataBase("labook_users")
 
-   if (!user) {
-      throw new Error("Usuário não encontrado ou senha incorreta")
+   const user = await ud.login(email)
+
+   if (user === null) {
+      throw new CustomError(400, "Usuário não encontrado ou senha incorreta")
    }
 
-   const passwordIsCorrect: boolean = await compare(password, user.password)
+   const hd = new HashManager
+
+   const passwordIsCorrect = await hd.compare(password, user.password)
 
    if (!passwordIsCorrect) {
-      throw new Error("Usuário não encontrado ou senha incorreta")
+      throw new CustomError(400, "Usuário não encontrado ou senha incorreta")
    }
 
    const token: string = generateToken({
